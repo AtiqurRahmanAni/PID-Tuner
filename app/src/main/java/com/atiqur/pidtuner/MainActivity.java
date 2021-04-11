@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 synchronized (this) {
                     try {
-                        wait(22);
+                        wait(25);
                     } catch (Exception e) {
                         return;
                     }

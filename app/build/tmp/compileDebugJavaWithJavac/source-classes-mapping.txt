@@ -12,8 +12,10 @@ com/atiqur/pidtuner/databinding/ActivityMainBinding.java
  com.atiqur.pidtuner.databinding.ActivityMainBinding
 com/atiqur/pidtuner/BuildConfig.java
  com.atiqur.pidtuner.BuildConfig
-com/atiqur/pidtuner/databinding/ActivityPairedBinding.java
- com.atiqur.pidtuner.databinding.ActivityPairedBinding
+com/atiqur/pidtuner/MainActivity.java
+ com.atiqur.pidtuner.MainActivity
+ com.atiqur.pidtuner.MainActivity$1
+ com.atiqur.pidtuner.MainActivity$2
 com/atiqur/pidtuner/PairedActivity.java
  com.atiqur.pidtuner.PairedActivity
 com/atiqur/pidtuner/utils/ToolbarHelper.java
@@ -22,7 +24,5 @@ com/atiqur/pidtuner/databinding/DeviceNameBinding.java
  com.atiqur.pidtuner.databinding.DeviceNameBinding
 com/atiqur/pidtuner/databinding/ItemPairedDeviceBinding.java
  com.atiqur.pidtuner.databinding.ItemPairedDeviceBinding
-com/atiqur/pidtuner/MainActivity.java
- com.atiqur.pidtuner.MainActivity
- com.atiqur.pidtuner.MainActivity$1
- com.atiqur.pidtuner.MainActivity$2
+com/atiqur/pidtuner/databinding/ActivityPairedBinding.java
+ com.atiqur.pidtuner.databinding.ActivityPairedBinding
