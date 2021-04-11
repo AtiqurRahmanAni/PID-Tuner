@@ -25,7 +25,8 @@ import com.atiqur.pidtuner.utils.ToolbarHelper;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    private boolean allow = false;
+    private boolean allowKP = false;
+    private boolean allowKD = false;
     private boolean menuCreated = false;
     private BluetoothAdapter mBluetoothAdapter = null;
     public Bluetooth mBluetooth = null;
@@ -75,15 +76,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final Runnable sendValue = new Runnable() {
-        private boolean once = false;
-
         public void run() {
             while (true) {
-                if (allow) {
-                    once = true;
+                if (allowKP) {
                     int KPValue = (int) binding.sliderKP.getValue();
-                    int KDValue = (int) binding.sliderKD.getValue();
                     mBluetooth.write(HelperUtils.toBytes('P', KPValue, 3));
+                }
+                if (allowKD) {
+                    int KDValue = (int) binding.sliderKD.getValue();
                     mBluetooth.write(HelperUtils.toBytes('D', KDValue, 3));
                 }
                 synchronized (this) {
@@ -103,11 +103,11 @@ public class MainActivity extends AppCompatActivity {
         binding.kdTextView.setText(String.format("KD: %s", (int)binding.sliderKD.getValue()));
         binding.sliderKP.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                if (!allow && mBluetooth.getState() == 2) {
-                    allow = true;
+                if (!allowKP && mBluetooth.getState() == 2) {
+                    allowKP = true;
                 }
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                allow = false;
+                allowKP = false;
             }
             binding.kpTextView.setText(String.format("KP: %s", (int)binding.sliderKP.getValue()));
 //            Log.d("allow", binding.sliderKP.getValue() + "KP");
@@ -120,11 +120,11 @@ public class MainActivity extends AppCompatActivity {
 
         binding.sliderKD.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                if (!allow && mBluetooth.getState() == 2) {
-                    allow = true;
+                if (!allowKD && mBluetooth.getState() == 2) {
+                    allowKD = true;
                 }
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                allow = false;
+                allowKD = false;
             }
             if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
                 Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
