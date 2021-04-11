@@ -1,0 +1,11 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.PIDTuner" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <!-- Status bar color. -->
+        <!-- Customize your theme here. -->
+        <item name="android:forceDarkAllowed" tools:ignore="NewApi">false</item>
+        <item name="android:statusBarColor">@color/red</item>
+    </style>
+</resources>

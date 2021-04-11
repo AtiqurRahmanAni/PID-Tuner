@@ -1,0 +1,28 @@
+com/atiqur/pidtuner/utils/HelperUtils.java
+ com.atiqur.pidtuner.utils.HelperUtils
+com/atiqur/pidtuner/adapter/PairedDeviceAdapter.java
+ com.atiqur.pidtuner.adapter.PairedDeviceAdapter
+ com.atiqur.pidtuner.adapter.PairedDeviceAdapter$OnItemClick
+ com.atiqur.pidtuner.adapter.PairedDeviceAdapter$ViewHolder
+com/atiqur/pidtuner/Bluetooth.java
+ com.atiqur.pidtuner.Bluetooth
+ com.atiqur.pidtuner.Bluetooth$ConnectThread
+ com.atiqur.pidtuner.Bluetooth$ConnectedThread
+com/atiqur/pidtuner/databinding/ActivityMainBinding.java
+ com.atiqur.pidtuner.databinding.ActivityMainBinding
+com/atiqur/pidtuner/BuildConfig.java
+ com.atiqur.pidtuner.BuildConfig
+com/atiqur/pidtuner/databinding/ActivityPairedBinding.java
+ com.atiqur.pidtuner.databinding.ActivityPairedBinding
+com/atiqur/pidtuner/PairedActivity.java
+ com.atiqur.pidtuner.PairedActivity
+com/atiqur/pidtuner/utils/ToolbarHelper.java
+ com.atiqur.pidtuner.utils.ToolbarHelper
+com/atiqur/pidtuner/databinding/DeviceNameBinding.java
+ com.atiqur.pidtuner.databinding.DeviceNameBinding
+com/atiqur/pidtuner/databinding/ItemPairedDeviceBinding.java
+ com.atiqur.pidtuner.databinding.ItemPairedDeviceBinding
+com/atiqur/pidtuner/MainActivity.java
+ com.atiqur.pidtuner.MainActivity
+ com.atiqur.pidtuner.MainActivity$1
+ com.atiqur.pidtuner.MainActivity$2
