@@ -33,35 +33,36 @@
 21-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:12:9-54
 22        android:supportsRtl="true"
 22-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:13:9-35
-23        android:theme="@style/Theme.PIDTuner" >
-23-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:14:9-46
-24        <activity
-24-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:15:9-19:52
-25            android:name="com.atiqur.pidtuner.PairedActivity"
-25-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:16:13-43
-26            android:parentActivityName="com.atiqur.pidtuner.MainActivity"
-26-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:18:13-55
-27            android:screenOrientation="landscape"
-27-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:17:13-50
-28            android:theme="@style/Theme.PIDTuner" />
-28-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:19:13-50
-29        <activity
-29-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:20:9-27:20
-30            android:name="com.atiqur.pidtuner.MainActivity"
-30-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:21:13-41
-31            android:screenOrientation="landscape" >
-31-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:22:13-50
-32            <intent-filter>
-32-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:23:13-26:29
-33                <action android:name="android.intent.action.MAIN" />
-33-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:17-69
-33-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:25-66
-34
-35                <category android:name="android.intent.category.LAUNCHER" />
-35-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:17-77
-35-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:27-74
-36            </intent-filter>
-37        </activity>
-38    </application>
-39
-40</manifest>
+23        android:testOnly="true"
+24        android:theme="@style/Theme.PIDTuner" >
+24-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:14:9-46
+25        <activity
+25-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:15:9-19:52
+26            android:name="com.atiqur.pidtuner.PairedActivity"
+26-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:16:13-43
+27            android:parentActivityName="com.atiqur.pidtuner.MainActivity"
+27-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:18:13-55
+28            android:screenOrientation="landscape"
+28-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:17:13-50
+29            android:theme="@style/Theme.PIDTuner" />
+29-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:19:13-50
+30        <activity
+30-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:20:9-27:20
+31            android:name="com.atiqur.pidtuner.MainActivity"
+31-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:21:13-41
+32            android:screenOrientation="landscape" >
+32-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:22:13-50
+33            <intent-filter>
+33-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:23:13-26:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:17-69
+34-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:17-77
+36-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:27-74
+37            </intent-filter>
+38        </activity>
+39    </application>
+40
+41</manifest>

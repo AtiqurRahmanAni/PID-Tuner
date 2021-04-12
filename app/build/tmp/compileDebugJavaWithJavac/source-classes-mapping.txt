@@ -1,5 +1,5 @@
-com/atiqur/pidtuner/utils/HelperUtils.java
- com.atiqur.pidtuner.utils.HelperUtils
+com/atiqur/pidtuner/databinding/ItemPairedDeviceBinding.java
+ com.atiqur.pidtuner.databinding.ItemPairedDeviceBinding
 com/atiqur/pidtuner/adapter/PairedDeviceAdapter.java
  com.atiqur.pidtuner.adapter.PairedDeviceAdapter
  com.atiqur.pidtuner.adapter.PairedDeviceAdapter$OnItemClick
@@ -20,8 +20,8 @@ com/atiqur/pidtuner/utils/ToolbarHelper.java
  com.atiqur.pidtuner.utils.ToolbarHelper
 com/atiqur/pidtuner/databinding/DeviceNameBinding.java
  com.atiqur.pidtuner.databinding.DeviceNameBinding
-com/atiqur/pidtuner/databinding/ItemPairedDeviceBinding.java
- com.atiqur.pidtuner.databinding.ItemPairedDeviceBinding
+com/atiqur/pidtuner/utils/HelperUtils.java
+ com.atiqur.pidtuner.utils.HelperUtils
 com/atiqur/pidtuner/MainActivity.java
  com.atiqur.pidtuner.MainActivity
  com.atiqur.pidtuner.MainActivity$1

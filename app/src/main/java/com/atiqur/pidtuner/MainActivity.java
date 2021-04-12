@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.solver.widgets.Helper;
 import androidx.core.content.ContextCompat;
 
 import com.atiqur.pidtuner.databinding.ActivityMainBinding;
@@ -79,12 +80,12 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             while (true) {
                 if (allowKP) {
-                    int KPValue = (int) binding.sliderKP.getValue();
-                    mBluetooth.write(HelperUtils.toBytes('P', KPValue, 3));
+                    float KPValue = binding.sliderKP.getValue();
+                    mBluetooth.write(HelperUtils.toBytesFloat('P', KPValue, 4));
                 }
                 if (allowKD) {
-                    int KDValue = (int) binding.sliderKD.getValue();
-                    mBluetooth.write(HelperUtils.toBytes('D', KDValue, 3));
+                    float KDValue = binding.sliderKD.getValue();
+                    mBluetooth.write(HelperUtils.toBytesFloat('D', KDValue, 4));
                 }
                 synchronized (this) {
                     try {
@@ -99,17 +100,18 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void sliderListener() {
-        binding.kpTextView.setText(String.format("KP: %s", (int)binding.sliderKP.getValue()));
-        binding.kdTextView.setText(String.format("KD: %s", (int)binding.sliderKD.getValue()));
+        binding.kpTextView.setText(String.format("KP: %.6s", binding.sliderKP.getValue()));
+        binding.kdTextView.setText(String.format("KD: %.6s", binding.sliderKD.getValue()));
         binding.sliderKP.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                //HelperUtils.toBytesFloat('P',binding.sliderKP.getValue(),6);
                 if (!allowKP && mBluetooth.getState() == 2) {
                     allowKP = true;
                 }
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 allowKP = false;
             }
-            binding.kpTextView.setText(String.format("KP: %s", (int)binding.sliderKP.getValue()));
+            binding.kpTextView.setText(String.format("KP: %.6s", binding.sliderKP.getValue()));
 //            Log.d("allow", binding.sliderKP.getValue() + "KP");
 //            Log.d("allow", binding.sliderKD.getValue() + "KD");
             if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
@@ -129,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
             if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
                 Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
             }
-            binding.kdTextView.setText(String.format("KD: %s", (int)binding.sliderKD.getValue()));
+            binding.kdTextView.setText(String.format("KD: %.6s",binding.sliderKD.getValue()));
             return false;
         });
     }
