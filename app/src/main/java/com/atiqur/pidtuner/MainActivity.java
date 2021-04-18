@@ -25,9 +25,11 @@ import com.atiqur.pidtuner.utils.ToolbarHelper;
 
 public class MainActivity extends AppCompatActivity {
 
+
     ActivityMainBinding binding;
     private boolean allowKP = false;
     private boolean allowKD = false;
+    private boolean allowKI = false;
     private boolean menuCreated = false;
     private BluetoothAdapter mBluetoothAdapter = null;
     public Bluetooth mBluetooth = null;
@@ -50,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onResume() {
         super.onResume();
+        binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
+        binding.kdTextView.setText(String.format("KD: %.4s", binding.sliderKD.getValue()));
+        binding.kiTextView.setText(String.format("KI: %.4s",binding.sliderKi.getValue()));
         checkBluetooth();
         if (mBluetooth == null) {
             mBluetooth = new Bluetooth(mHandler);
@@ -87,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                     float KDValue = binding.sliderKD.getValue();
                     mBluetooth.write(HelperUtils.toBytesFloat('D', KDValue, 4));
                 }
+                if (allowKI) {
+                    float KIValue = binding.sliderKi.getValue();
+                    mBluetooth.write(HelperUtils.toBytesFloat('I', KIValue, 4));
+                }
                 synchronized (this) {
                     try {
                         wait(25);
@@ -100,8 +109,9 @@ public class MainActivity extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     private void sliderListener() {
-        binding.kpTextView.setText(String.format("KP: %.6s", binding.sliderKP.getValue()));
-        binding.kdTextView.setText(String.format("KD: %.6s", binding.sliderKD.getValue()));
+//        binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
+//        binding.kdTextView.setText(String.format("KD: %.4s", binding.sliderKD.getValue()));
+//        binding.kiTextView.setText(String.format("KI: %.4s",binding.sliderKi.getValue()));
         binding.sliderKP.setOnTouchListener((v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
                 //HelperUtils.toBytesFloat('P',binding.sliderKP.getValue(),6);
@@ -111,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
                 allowKP = false;
             }
-            binding.kpTextView.setText(String.format("KP: %.6s", binding.sliderKP.getValue()));
+            binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
 //            Log.d("allow", binding.sliderKP.getValue() + "KP");
 //            Log.d("allow", binding.sliderKD.getValue() + "KD");
             if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
@@ -131,7 +141,22 @@ public class MainActivity extends AppCompatActivity {
             if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
                 Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
             }
-            binding.kdTextView.setText(String.format("KD: %.6s",binding.sliderKD.getValue()));
+            binding.kdTextView.setText(String.format("KD: %.4s",binding.sliderKD.getValue()));
+            return false;
+        });
+
+        binding.sliderKi.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
+                if (!allowKI && mBluetooth.getState() == 2) {
+                    allowKI = true;
+                }
+            } else if (event.getAction() == MotionEvent.ACTION_UP) {
+                allowKI = false;
+            }
+            if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
+                Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
+            }
+            binding.kiTextView.setText(String.format("KI: %.4s",binding.sliderKi.getValue()));
             return false;
         });
     }
