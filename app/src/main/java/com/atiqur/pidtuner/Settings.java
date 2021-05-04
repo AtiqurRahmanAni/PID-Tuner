@@ -28,7 +28,7 @@ public class Settings extends AppCompatActivity {
         setContentView(binding.getRoot());
         init();
     }
-
+//
     private void init() {
         ToolbarHelper.create(binding.toolbar, null, this, "Settings");
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
