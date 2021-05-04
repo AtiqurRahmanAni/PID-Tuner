@@ -10,16 +10,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7f58f18-6277-4c2a-93ff-b1361ba6be49" name="Default Changelist" comment="Updating in progress" />
+    <list default="true" id="d7f58f18-6277-4c2a-93ff-b1361ba6be49" name="Default Changelist" comment="Updating in progress">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -204,7 +201,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620154090014</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updating in progress">
+      <created>1620154363117</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1620154363117</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updating in progress">
+      <created>1620154423548</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1620154423548</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,14 +279,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1876" height="195" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1620152280105" />
-    <state x="461" y="170" key="SettingsEditor" timestamp="1620154180329">
+    <state x="461" y="170" key="SettingsEditor" timestamp="1620154568241">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620154180329" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620154092686">
+    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620154568241" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620154425284">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620154092686" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620154425284" />
     <state x="741" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1618210779667">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
