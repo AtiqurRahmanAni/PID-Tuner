@@ -14,9 +14,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d7f58f18-6277-4c2a-93ff-b1361ba6be49" name="Default Changelist" comment="Updating in progress">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d7f58f18-6277-4c2a-93ff-b1361ba6be49" name="Default Changelist" comment="Updating in progress" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620154423548</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updating in progress">
+      <created>1620154650993</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1620154650993</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -279,14 +284,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1876" height="195" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1620152280105" />
-    <state x="461" y="170" key="SettingsEditor" timestamp="1620154568241">
+    <state x="461" y="170" key="SettingsEditor" timestamp="1620154672133">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620154568241" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620154425284">
+    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620154672133" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620154653570">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620154425284" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620154653570" />
     <state x="741" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1618210779667">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
