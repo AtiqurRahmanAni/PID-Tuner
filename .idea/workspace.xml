@@ -57,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$PROJECT_DIR$/../../Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/font" />
-    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.-1390693818">
@@ -197,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620153878450</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Updating in progress">
+      <created>1620154090014</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1620154090014</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,10 +268,14 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state width="1876" height="195" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1620152280105" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620153885715">
+    <state x="461" y="170" key="SettingsEditor" timestamp="1620154180329">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620153885715" />
+    <state x="461" y="170" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620154180329" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620154092686">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620154092686" />
     <state x="741" y="426" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1618210779667">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
