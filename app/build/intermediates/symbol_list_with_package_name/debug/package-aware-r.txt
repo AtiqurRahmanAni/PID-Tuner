@@ -1025,6 +1025,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color edit_text_color
 color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
@@ -2299,6 +2300,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_background
 drawable custom_ripple
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
@@ -2309,6 +2311,7 @@ drawable design_snackbar_background
 drawable ic_bluetooth
 drawable ic_bluetooth_connecting
 drawable ic_clock_black_24dp
+drawable ic_done
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -2353,6 +2356,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 font roboto_light
 font roboto_light_xml
+font roboto_regular
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -2421,6 +2425,7 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id addFile1
 id address
 id alertTitle
 id aligned
@@ -2555,7 +2560,11 @@ id item_touch_helper_previous_elevation
 id jobBoard
 id jumpToEnd
 id jumpToStart
+id kdEditText
 id kdTextView
+id kiEditText
+id kiTextView
+id kpEditText
 id kpTextView
 id labelGroup
 id labeled
@@ -2589,6 +2598,7 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id menu_disconnect
+id menu_settings
 id message
 id middle
 id mini
@@ -2696,6 +2706,7 @@ id skipCollapsed
 id slide
 id sliderKD
 id sliderKP
+id sliderKi
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -2841,6 +2852,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_paired
+layout activity_settings
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3419,6 +3431,7 @@ style TextAppearance_MaterialComponents_Tooltip
 style TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 style TextAppearance_Widget_AppCompat_Toolbar_Subtitle
 style TextAppearance_Widget_AppCompat_Toolbar_Title
+style TextInputLayoutStyle
 style Theme_AppCompat
 style Theme_AppCompat_CompactMenu
 style Theme_AppCompat_DayNight

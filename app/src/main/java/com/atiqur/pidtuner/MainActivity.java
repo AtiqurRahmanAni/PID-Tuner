@@ -22,20 +22,23 @@ import androidx.core.content.ContextCompat;
 import com.atiqur.pidtuner.databinding.ActivityMainBinding;
 import com.atiqur.pidtuner.utils.HelperUtils;
 import com.atiqur.pidtuner.utils.ToolbarHelper;
+import com.google.android.material.slider.Slider;
 
 public class MainActivity extends AppCompatActivity {
 
 
     ActivityMainBinding binding;
-    private boolean allowKP = false;
-    private boolean allowKD = false;
-    private boolean allowKI = false;
+    private static final double THRESHOLD = .0001;
+    private volatile float kp = 0;
+    private volatile float ki = 0;
+    private volatile float kd = 0;
     private boolean menuCreated = false;
     private BluetoothAdapter mBluetoothAdapter = null;
     public Bluetooth mBluetooth = null;
     private String deviceAddress = null;
     private static final int REQUEST_ENABLE_BT = 222;
     private static final int ENABLED = 111;
+    public static final int SETTINGS = 333;
     private boolean isConnected = false;
     private Menu menu;
     private Thread mPIDThread;
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
         binding.kdTextView.setText(String.format("KD: %.4s", binding.sliderKD.getValue()));
-        binding.kiTextView.setText(String.format("KI: %.4s",binding.sliderKi.getValue()));
+        binding.kiTextView.setText(String.format("KI: %.4s", binding.sliderKi.getValue()));
         checkBluetooth();
         if (mBluetooth == null) {
             mBluetooth = new Bluetooth(mHandler);
@@ -82,19 +85,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final Runnable sendValue = new Runnable() {
+        float prevkp = 0;
+        float prevkd = 0;
+        float prevki = 0;
+
         public void run() {
             while (true) {
-                if (allowKP) {
-                    float KPValue = binding.sliderKP.getValue();
-                    mBluetooth.write(HelperUtils.toBytesFloat('P', KPValue, 4));
+                if (Math.abs(kp - prevkp) >= THRESHOLD && mBluetooth.getState() == 2) {
+                    Log.d("Test", "KP: " + kp);
+                    prevkp = kp;
+                    mBluetooth.write(HelperUtils.toBytesFloat('P', kp, 4));
                 }
-                if (allowKD) {
-                    float KDValue = binding.sliderKD.getValue();
-                    mBluetooth.write(HelperUtils.toBytesFloat('D', KDValue, 4));
+                if (Math.abs(kd - prevkd) >= THRESHOLD && mBluetooth.getState() == 2) {
+                    Log.d("Test", "KD: " + kd);
+                    prevkd = kd;
+                    mBluetooth.write(HelperUtils.toBytesFloat('D', kd, 4));
                 }
-                if (allowKI) {
-                    float KIValue = binding.sliderKi.getValue();
-                    mBluetooth.write(HelperUtils.toBytesFloat('I', KIValue, 4));
+                if (Math.abs(ki - prevki) >= THRESHOLD && mBluetooth.getState() == 2) {
+                    Log.d("Test", "KI: " + ki);
+                    prevki = ki;
+                    mBluetooth.write(HelperUtils.toBytesFloat('I', ki, 4));
                 }
                 synchronized (this) {
                     try {
@@ -107,57 +117,19 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    @SuppressLint("ClickableViewAccessibility")
     private void sliderListener() {
-//        binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
-//        binding.kdTextView.setText(String.format("KD: %.4s", binding.sliderKD.getValue()));
-//        binding.kiTextView.setText(String.format("KI: %.4s",binding.sliderKi.getValue()));
-        binding.sliderKP.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                //HelperUtils.toBytesFloat('P',binding.sliderKP.getValue(),6);
-                if (!allowKP && mBluetooth.getState() == 2) {
-                    allowKP = true;
-                }
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                allowKP = false;
-            }
-            binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
-//            Log.d("allow", binding.sliderKP.getValue() + "KP");
-//            Log.d("allow", binding.sliderKD.getValue() + "KD");
-            if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
-                Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
-            }
-            return false;
-        });
 
-        binding.sliderKD.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                if (!allowKD && mBluetooth.getState() == 2) {
-                    allowKD = true;
-                }
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                allowKD = false;
-            }
-            if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
-                Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
-            }
-            binding.kdTextView.setText(String.format("KD: %.4s",binding.sliderKD.getValue()));
-            return false;
+        binding.sliderKP.addOnChangeListener((slider, value, fromUser) -> {
+            kp = slider.getValue();
+            binding.kpTextView.setText(String.format("KP: %.4s", kp));
         });
-
-        binding.sliderKi.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN || event.getAction() == MotionEvent.ACTION_MOVE) {
-                if (!allowKI && mBluetooth.getState() == 2) {
-                    allowKI = true;
-                }
-            } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                allowKI = false;
-            }
-            if (event.getAction() == MotionEvent.ACTION_DOWN && mBluetooth.getState() != 2) {
-                Toast.makeText(MainActivity.this, "You are not connected to a device", Toast.LENGTH_SHORT).show();
-            }
-            binding.kiTextView.setText(String.format("KI: %.4s",binding.sliderKi.getValue()));
-            return false;
+        binding.sliderKD.addOnChangeListener((slider, value, fromUser) -> {
+            kd = slider.getValue();
+            binding.kdTextView.setText(String.format("KD: %.4s", kd));
+        });
+        binding.sliderKi.addOnChangeListener((slider, value, fromUser) -> {
+            ki = slider.getValue();
+            binding.kiTextView.setText(String.format("KI: %.4s", ki));
         });
     }
 
@@ -189,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
             }
         } else if (item.getItemId() == R.id.menu_disconnect) {
             mBluetooth.disconnect();
+        } else if (item.getItemId() == R.id.menu_settings) {
+            startActivityForResult(new Intent(this, Settings.class), SETTINGS);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -227,6 +201,11 @@ public class MainActivity extends AppCompatActivity {
         } else if (requestCode == REQUEST_ENABLE_BT && resultCode == RESULT_CANCELED) {
             Toast.makeText(getApplicationContext(), "Bluetooth not enabled. Leaving", Toast.LENGTH_SHORT).show();
             finish();
+        } else if (requestCode == SETTINGS && resultCode == RESULT_OK) {
+            Bundle bundle = data.getExtras();
+            binding.sliderKP.setValueTo(bundle.getFloat(Settings.key_kp));
+            binding.sliderKD.setValueTo(bundle.getFloat(Settings.key_kd));
+            binding.sliderKi.setValueTo(bundle.getFloat(Settings.key_ki));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

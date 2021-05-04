@@ -18,7 +18,7 @@
 12-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:6:22-71
 13
 14    <application
-14-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:8:5-28:19
+14-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:8:5-35:19
 15        android:allowBackup="true"
 15-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:9:9-35
 16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -37,32 +37,43 @@
 24        android:theme="@style/Theme.PIDTuner" >
 24-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:14:9-46
 25        <activity
-25-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:15:9-19:52
-26            android:name="com.atiqur.pidtuner.PairedActivity"
-26-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:16:13-43
+25-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:15:9-20:20
+26            android:name="com.atiqur.pidtuner.Settings"
+26-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:16:13-37
 27            android:parentActivityName="com.atiqur.pidtuner.MainActivity"
-27-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:18:13-55
-28            android:screenOrientation="landscape"
-28-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:17:13-50
-29            android:theme="@style/Theme.PIDTuner" />
+27-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:17:13-55
+28            android:screenOrientation="portrait"
+28-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:18:13-49
+29            android:theme="@style/Theme.PIDTuner" >
 29-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:19:13-50
-30        <activity
-30-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:20:9-27:20
-31            android:name="com.atiqur.pidtuner.MainActivity"
-31-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:21:13-41
-32            android:screenOrientation="landscape" >
-32-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:22:13-50
-33            <intent-filter>
-33-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:23:13-26:29
-34                <action android:name="android.intent.action.MAIN" />
-34-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:17-69
-34-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:25-66
-35
-36                <category android:name="android.intent.category.LAUNCHER" />
-36-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:17-77
-36-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:27-74
-37            </intent-filter>
-38        </activity>
-39    </application>
-40
-41</manifest>
+30        </activity>
+31        <activity
+31-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:21:9-25:53
+32            android:name="com.atiqur.pidtuner.PairedActivity"
+32-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:22:13-43
+33            android:parentActivityName="com.atiqur.pidtuner.MainActivity"
+33-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:23:13-55
+34            android:screenOrientation="landscape"
+34-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:13-50
+35            android:theme="@style/Theme.PIDTuner" />
+35-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:13-50
+36        <activity
+36-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:26:9-34:20
+37            android:name="com.atiqur.pidtuner.MainActivity"
+37-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:27:13-41
+38            android:screenOrientation="landscape" >
+38-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:28:13-50
+39            <intent-filter>
+39-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:29:13-33:29
+40                <action android:name="android.intent.action.MAIN" />
+40-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:30:17-69
+40-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:30:25-66
+41
+42                <category android:name="android.intent.category.LAUNCHER" />
+42-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:32:17-77
+42-->G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:32:27-74
+43            </intent-filter>
+44        </activity>
+45    </application>
+46
+47</manifest>

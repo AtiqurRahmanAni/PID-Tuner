@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
 MERGED from [androidx.databinding:viewbinding:4.1.3] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\0ba815a9066007969331132ccd6f5eca\jetified-viewbinding-4.1.3\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\723282c7994550298e26d567cb0e519b\material-1.3.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\9570f34841c72a34d773388f89286f55\constraintlayout-2.0.4\AndroidManifest.xml:2:1-11:12
@@ -39,20 +39,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Atiqur Rahman
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\96d0ad977091c6484e2db42674538c87\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\9a82a1a22af6402c2242c9ee80e8919f\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\adf8d4ec58c98f5b37616cb4b06b74f4\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
-INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
+INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
 	package
 		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:3:5-34
 		INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml
 		INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
 		INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-30:12
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:1-37:12
 		INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:2:11-69
@@ -65,7 +65,7 @@ ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:6:5-74
 	android:name
 		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:6:22-71
 application
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:8:5-28:19
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:8:5-35:19
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\723282c7994550298e26d567cb0e519b\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\723282c7994550298e26d567cb0e519b\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\Atiqur Rahman\.gradle\caches\transforms-2\files-2.1\9570f34841c72a34d773388f89286f55\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -88,32 +88,42 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\At
 		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme
 		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:14:9-46
-activity#com.atiqur.pidtuner.PairedActivity
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:15:9-19:52
+activity#com.atiqur.pidtuner.Settings
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:15:9-20:20
 	android:screenOrientation
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:17:13-50
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:18:13-49
 	android:parentActivityName
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:18:13-55
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:17:13-55
 	android:theme
 		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:19:13-50
 	android:name
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:16:13-43
-activity#com.atiqur.pidtuner.MainActivity
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:20:9-27:20
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:16:13-37
+activity#com.atiqur.pidtuner.PairedActivity
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:21:9-25:53
 	android:screenOrientation
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:22:13-50
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:13-50
+	android:parentActivityName
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:23:13-55
+	android:theme
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:13-50
 	android:name
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:21:13-41
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:22:13-43
+activity#com.atiqur.pidtuner.MainActivity
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:26:9-34:20
+	android:screenOrientation
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:28:13-50
+	android:name
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:27:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:23:13-26:29
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:29:13-33:29
 action#android.intent.action.MAIN
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:17-69
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:30:17-69
 	android:name
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:24:25-66
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:30:25-66
 category#android.intent.category.LAUNCHER
-ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:17-77
+ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:32:17-77
 	android:name
-		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:25:27-74
+		ADDED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml:32:27-74
 uses-sdk
 INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\Apps\PIDTuner\app\src\main\AndroidManifest.xml

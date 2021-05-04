@@ -4,6 +4,10 @@
         "source": "G:\\Apps\\PIDTuner\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
+        "merged": "G:\\Apps\\PIDTuner\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_settings.xml",
+        "source": "G:\\Apps\\PIDTuner\\app\\src\\main\\res\\layout\\activity_settings.xml"
+    },
+    {
         "merged": "G:\\Apps\\PIDTuner\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\device_name.xml",
         "source": "G:\\Apps\\PIDTuner\\app\\src\\main\\res\\layout\\device_name.xml"
     },

@@ -24,6 +24,9 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TextView kdTextView;
 
   @NonNull
+  public final TextView kiTextView;
+
+  @NonNull
   public final TextView kpTextView;
 
   @NonNull
@@ -33,16 +36,21 @@ public final class ActivityMainBinding implements ViewBinding {
   public final Slider sliderKP;
 
   @NonNull
+  public final Slider sliderKi;
+
+  @NonNull
   public final Toolbar toolbar;
 
   private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull TextView kdTextView,
-      @NonNull TextView kpTextView, @NonNull Slider sliderKD, @NonNull Slider sliderKP,
-      @NonNull Toolbar toolbar) {
+      @NonNull TextView kiTextView, @NonNull TextView kpTextView, @NonNull Slider sliderKD,
+      @NonNull Slider sliderKP, @NonNull Slider sliderKi, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.kdTextView = kdTextView;
+    this.kiTextView = kiTextView;
     this.kpTextView = kpTextView;
     this.sliderKD = sliderKD;
     this.sliderKP = sliderKP;
+    this.sliderKi = sliderKi;
     this.toolbar = toolbar;
   }
 
@@ -79,6 +87,12 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.kiTextView;
+      TextView kiTextView = rootView.findViewById(id);
+      if (kiTextView == null) {
+        break missingId;
+      }
+
       id = R.id.kpTextView;
       TextView kpTextView = rootView.findViewById(id);
       if (kpTextView == null) {
@@ -97,14 +111,20 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.sliderKi;
+      Slider sliderKi = rootView.findViewById(id);
+      if (sliderKi == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       Toolbar toolbar = rootView.findViewById(id);
       if (toolbar == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, kdTextView, kpTextView, sliderKD,
-          sliderKP, toolbar);
+      return new ActivityMainBinding((ConstraintLayout) rootView, kdTextView, kiTextView,
+          kpTextView, sliderKD, sliderKP, sliderKi, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

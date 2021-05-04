@@ -308,7 +308,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Sdk/icons/material/materialicons/bluetooth/baseline_bluetooth_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Sdk/icons/material/materialicons/done_outline/baseline_done_outline_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -318,7 +318,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_bluetooth" />
+                            <entry key="outputName" value="ic_done" />
                             <entry key="sourceFile" value="G:\Apps\PIDTuner" />
                           </map>
                         </option>
