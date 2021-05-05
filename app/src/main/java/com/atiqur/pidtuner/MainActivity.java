@@ -3,6 +3,7 @@ package com.atiqur.pidtuner;
 import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -49,15 +50,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        ToolbarHelper.create(binding.toolbar, null, this, "PID Tuner");
+        init();
+    }
+
+    private void init() {
         sliderListener();
+        ToolbarHelper.create(binding.toolbar, null, this, "PID Tuner");
+        SharedPreferences sharedPreferences = getSharedPreferences(Settings.SHARED_PREFS, MODE_PRIVATE);
+        float kp = sharedPreferences.getFloat(Settings.KEY_KP, 50f);
+        float kd = sharedPreferences.getFloat(Settings.KEY_KD, 50f);
+        float ki = sharedPreferences.getFloat(Settings.KEY_KI, 50f);
+        setSliderValues(kp, kd, ki);
+    }
+
+    private void setSliderValues(float kp, float kd, float ki) {
+        binding.kpMaxValue.setText(String.format("KP(max %.3s):", (int)kp));
+        binding.kdMaxValue.setText(String.format("KD(max %.3s):", (int)kd));
+        binding.kiMaxValue.setText(String.format("KI(max %.3s):", (int)ki));
+        binding.sliderKP.setValueTo(kp);
+        binding.sliderKD.setValueTo(kd);
+        binding.sliderKi.setValueTo(ki);
+        binding.sliderKP.setValue(0f);
+        binding.sliderKD.setValue(0f);
+        binding.sliderKi.setValue(0f);
     }
 
     public void onResume() {
         super.onResume();
-        binding.kpTextView.setText(String.format("KP: %.4s", binding.sliderKP.getValue()));
-        binding.kdTextView.setText(String.format("KD: %.4s", binding.sliderKD.getValue()));
-        binding.kiTextView.setText(String.format("KI: %.4s", binding.sliderKi.getValue()));
+        binding.kpTextView.setText(String.format("%.5s", binding.sliderKP.getValue()));
+        binding.kdTextView.setText(String.format("%.5s", binding.sliderKD.getValue()));
+        binding.kiTextView.setText(String.format("%.5s", binding.sliderKi.getValue()));
         checkBluetooth();
         if (mBluetooth == null) {
             mBluetooth = new Bluetooth(mHandler);
@@ -94,17 +116,17 @@ public class MainActivity extends AppCompatActivity {
                 if (Math.abs(kp - prevkp) >= THRESHOLD && mBluetooth.getState() == 2) {
                     Log.d("Test", "KP: " + kp);
                     prevkp = kp;
-                    mBluetooth.write(HelperUtils.toBytesFloat('P', kp, 4));
+                    mBluetooth.write(HelperUtils.toBytesFloat('P', kp, 5));
                 }
                 if (Math.abs(kd - prevkd) >= THRESHOLD && mBluetooth.getState() == 2) {
                     Log.d("Test", "KD: " + kd);
                     prevkd = kd;
-                    mBluetooth.write(HelperUtils.toBytesFloat('D', kd, 4));
+                    mBluetooth.write(HelperUtils.toBytesFloat('D', kd, 5));
                 }
                 if (Math.abs(ki - prevki) >= THRESHOLD && mBluetooth.getState() == 2) {
                     Log.d("Test", "KI: " + ki);
                     prevki = ki;
-                    mBluetooth.write(HelperUtils.toBytesFloat('I', ki, 4));
+                    mBluetooth.write(HelperUtils.toBytesFloat('I', ki, 5));
                 }
                 synchronized (this) {
                     try {
@@ -121,15 +143,15 @@ public class MainActivity extends AppCompatActivity {
 
         binding.sliderKP.addOnChangeListener((slider, value, fromUser) -> {
             kp = slider.getValue();
-            binding.kpTextView.setText(String.format("KP: %.4s", kp));
+            binding.kpTextView.setText(String.format("%.5s", kp));
         });
         binding.sliderKD.addOnChangeListener((slider, value, fromUser) -> {
             kd = slider.getValue();
-            binding.kdTextView.setText(String.format("KD: %.4s", kd));
+            binding.kdTextView.setText(String.format("%.5s", kd));
         });
         binding.sliderKi.addOnChangeListener((slider, value, fromUser) -> {
             ki = slider.getValue();
-            binding.kiTextView.setText(String.format("KI: %.4s", ki));
+            binding.kiTextView.setText(String.format("%.5s", ki));
         });
     }
 
@@ -203,9 +225,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         } else if (requestCode == SETTINGS && resultCode == RESULT_OK) {
             Bundle bundle = data.getExtras();
-            binding.sliderKP.setValueTo(bundle.getFloat(Settings.key_kp));
-            binding.sliderKD.setValueTo(bundle.getFloat(Settings.key_kd));
-            binding.sliderKi.setValueTo(bundle.getFloat(Settings.key_ki));
+            setSliderValues(bundle.getFloat(Settings.KEY_KP), bundle.getFloat(Settings.KEY_KD), bundle.getFloat(Settings.KEY_KI));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
