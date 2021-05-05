@@ -124,7 +124,6 @@ public class Settings extends AppCompatActivity {
     }
 
     public void done(View view) {
-
         if (binding.kpEditText.getEditText() != null && binding.kdEditText.getEditText() != null && binding.kiEditText.getEditText() != null) {
             if (!binding.kpEditText.getEditText().getText().toString().isEmpty() && !binding.kdEditText.getEditText().getText().toString().isEmpty() &&
                     !binding.kiEditText.getEditText().getText().toString().isEmpty()) {
