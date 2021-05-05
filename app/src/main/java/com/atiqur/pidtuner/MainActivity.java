@@ -114,17 +114,14 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             while (true) {
                 if (Math.abs(kp - prevkp) >= THRESHOLD && mBluetooth.getState() == 2) {
-                    Log.d("Test", "KP: " + kp);
                     prevkp = kp;
                     mBluetooth.write(HelperUtils.toBytesFloat('P', kp, 5));
                 }
                 if (Math.abs(kd - prevkd) >= THRESHOLD && mBluetooth.getState() == 2) {
-                    Log.d("Test", "KD: " + kd);
                     prevkd = kd;
                     mBluetooth.write(HelperUtils.toBytesFloat('D', kd, 5));
                 }
                 if (Math.abs(ki - prevki) >= THRESHOLD && mBluetooth.getState() == 2) {
-                    Log.d("Test", "KI: " + ki);
                     prevki = ki;
                     mBluetooth.write(HelperUtils.toBytesFloat('I', ki, 5));
                 }
@@ -241,7 +238,8 @@ public class MainActivity extends AppCompatActivity {
                 } else if (msg.arg1 == 1 && menuCreated) {
                     isConnected = false;
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_bluetooth_connecting));
-                    menu.getItem(0).setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+                    menu.getItem(0).setShowAsAction(5);
+                    menu.getItem(0).setTitle("Connecting...");
                 } else if (msg.arg1 == 2 && menuCreated) {
                     isConnected = true;
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_bluetooth));

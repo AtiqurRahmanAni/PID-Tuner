@@ -46,13 +46,13 @@ public class Settings extends AppCompatActivity {
     private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         if (binding.kpEditText.getEditText() != null) {
-            binding.kpEditText.getEditText().setText(String.valueOf((int)sharedPreferences.getFloat(KEY_KP, 50f)));
+            binding.kpEditText.getEditText().setText(String.valueOf((int) sharedPreferences.getFloat(KEY_KP, 50f)));
         }
         if (binding.kdEditText.getEditText() != null) {
-            binding.kdEditText.getEditText().setText(String.valueOf((int)sharedPreferences.getFloat(KEY_KD, 50f)));
+            binding.kdEditText.getEditText().setText(String.valueOf((int) sharedPreferences.getFloat(KEY_KD, 50f)));
         }
         if (binding.kiEditText.getEditText() != null) {
-            binding.kiEditText.getEditText().setText(String.valueOf((int)sharedPreferences.getFloat(KEY_KI, 50f)));
+            binding.kiEditText.getEditText().setText(String.valueOf((int) sharedPreferences.getFloat(KEY_KI, 50f)));
         }
     }
 
@@ -70,7 +70,6 @@ public class Settings extends AppCompatActivity {
                 } else {
                     binding.kpEditText.setError("Please set value between 1 to 900");
                 }
-                //Log.d("Here", String.valueOf(HelperUtils.convertString(s).compareTo("900")));
             }
 
             @Override
@@ -92,7 +91,6 @@ public class Settings extends AppCompatActivity {
                 } else {
                     binding.kdEditText.setError("Please set value between 1 to 900");
                 }
-                //Log.d("Here", String.valueOf(HelperUtils.convertString(s).compareTo("900")));
             }
 
             @Override
@@ -114,7 +112,6 @@ public class Settings extends AppCompatActivity {
                 } else {
                     binding.kiEditText.setError("Please set value between 1 to 900");
                 }
-                //Log.d("Here", String.valueOf(HelperUtils.convertString(s).compareTo("900")));
             }
 
             @Override
@@ -127,20 +124,21 @@ public class Settings extends AppCompatActivity {
 
     public void done(View view) {
 
-
-        if (!Objects.requireNonNull(binding.kpEditText.getEditText()).getText().toString().isEmpty() &&
-                !Objects.requireNonNull(binding.kdEditText.getEditText()).getText().toString().isEmpty() && !Objects.requireNonNull(binding.kiEditText.getEditText()).getText().toString().isEmpty()) {
-            float kp = Float.parseFloat(Objects.requireNonNull(binding.kpEditText.getEditText()).getText().toString());
-            float kd = Float.parseFloat(Objects.requireNonNull(binding.kdEditText.getEditText()).getText().toString());
-            float ki = Float.parseFloat(Objects.requireNonNull(binding.kiEditText.getEditText()).getText().toString());
-            if (kp != 0 && kd != 0 && ki != 0) {
-                saveData(kp, kd, ki);
-                Intent intent = new Intent();
-                intent.putExtra(KEY_KP, kp);
-                intent.putExtra(KEY_KD, kd);
-                intent.putExtra(KEY_KI, ki);
-                setResult(RESULT_OK, intent);
-                finish();
+        if (binding.kpEditText.getEditText() != null && binding.kdEditText.getEditText() != null && binding.kiEditText.getEditText() != null) {
+            if (!binding.kpEditText.getEditText().getText().toString().isEmpty() && !binding.kdEditText.getEditText().getText().toString().isEmpty() &&
+                    !binding.kiEditText.getEditText().getText().toString().isEmpty()) {
+                float kp = Float.parseFloat(binding.kpEditText.getEditText().getText().toString());
+                float kd = Float.parseFloat(binding.kdEditText.getEditText().getText().toString());
+                float ki = Float.parseFloat(binding.kiEditText.getEditText().getText().toString());
+                if (kp > 0 && kd > 0 && ki > 0) {
+                    saveData(kp, kd, ki);
+                    Intent intent = new Intent();
+                    intent.putExtra(KEY_KP, kp);
+                    intent.putExtra(KEY_KD, kd);
+                    intent.putExtra(KEY_KI, ki);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                }
             }
         }
     }
