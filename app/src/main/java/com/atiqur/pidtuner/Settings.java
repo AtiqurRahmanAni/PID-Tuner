@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.atiqur.pidtuner.databinding.ActivitySettingsBinding;
 import com.atiqur.pidtuner.utils.HelperUtils;
@@ -130,7 +131,7 @@ public class Settings extends AppCompatActivity {
                 float kp = Float.parseFloat(binding.kpEditText.getEditText().getText().toString());
                 float kd = Float.parseFloat(binding.kdEditText.getEditText().getText().toString());
                 float ki = Float.parseFloat(binding.kiEditText.getEditText().getText().toString());
-                if (kp > 0 && kd > 0 && ki > 0) {
+                if (kp > 0 && kd > 0 && ki > 0 && kp<=900 && kd<=900 && ki<=900) {
                     saveData(kp, kd, ki);
                     Intent intent = new Intent();
                     intent.putExtra(KEY_KP, kp);
@@ -138,6 +139,8 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra(KEY_KI, ki);
                     setResult(RESULT_OK, intent);
                     finish();
+                }else{
+                    Toast.makeText(this, "Please set range from 1 to 900", Toast.LENGTH_SHORT).show();
                 }
             }
         }
