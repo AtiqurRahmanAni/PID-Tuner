@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,157 +8,162 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_35sdp"
-        android:background="@color/red"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/Theme.AppCompat.Light"
-        app:titleTextColor="@color/white" />
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:id="@+id/layoutKP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@color/red"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:popupTheme="@style/Theme.AppCompat.Light"
+            app:titleTextColor="@color/white" />
 
-        <TextView
-            android:id="@+id/kpMaxValue"
+
+        <LinearLayout
+            android:id="@+id/layoutKP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:text="KP(max 50): "
-            android:textColor="@color/red"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold" />
+            android:layout_marginStart="297dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="297dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
-        <TextView
-            android:id="@+id/kpTextView"
+            <TextView
+                android:id="@+id/kpMaxValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="KP(max 50): "
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/kpTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:fontFamily="@font/roboto_light"
+                android:text="50"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderKP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_5sdp"
-            android:fontFamily="@font/roboto_light"
-            android:text="50"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:stepSize="0.1"
+            android:valueFrom="0.0"
+            android:valueTo="50.0"
+            app:labelBehavior="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutKP"
+            app:thumbColor="@color/red"
+            app:thumbElevation="@dimen/_5sdp"
+            app:thumbRadius="@dimen/_10sdp"
+            app:trackColor="@color/trans_red" />
 
-    </LinearLayout>
-
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sliderKP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:stepSize="0.1"
-        android:valueFrom="0.0"
-        android:valueTo="50.0"
-        app:labelBehavior="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutKP"
-        app:thumbColor="@color/red"
-        app:thumbElevation="@dimen/_5sdp"
-        app:thumbRadius="@dimen/_10sdp"
-        app:trackColor="@color/trans_red" />
-
-    <LinearLayout
-        android:id="@+id/layoutKD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="303dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="304dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sliderKP">
-
-        <TextView
-            android:id="@+id/kdMaxValue"
+        <LinearLayout
+            android:id="@+id/layoutKD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:text="KD(max 50): "
-            android:textColor="@color/red"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold" />
+            android:layout_marginStart="303dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="304dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sliderKP">
 
-        <TextView
-            android:id="@+id/kdTextView"
+            <TextView
+                android:id="@+id/kdMaxValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="KD(max 50): "
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/kdTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:fontFamily="@font/roboto_light"
+                android:text="50"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderKD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:layout_marginHorizontal="@dimen/_5sdp"
-            android:text="50"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:stepSize="0.1"
+            android:valueFrom="0.0"
+            android:valueTo="50.0"
+            app:labelBehavior="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutKD"
+            app:thumbColor="@color/red"
+            app:thumbElevation="@dimen/_5sdp"
+            app:thumbRadius="@dimen/_10sdp"
+            app:trackColor="@color/trans_red" />
 
-    </LinearLayout>
-
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/sliderKD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:stepSize="0.1"
-        android:valueFrom="0.0"
-        android:valueTo="50.0"
-        app:labelBehavior="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutKD"
-        app:thumbColor="@color/red"
-        app:thumbElevation="@dimen/_5sdp"
-        app:thumbRadius="@dimen/_10sdp"
-        app:trackColor="@color/trans_red" />
-
-    <LinearLayout
-        android:id="@+id/layoutKI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="303dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="304dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sliderKD">
-
-        <TextView
-            android:id="@+id/kiMaxValue"
+        <LinearLayout
+            android:id="@+id/layoutKI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:text="KD(max 50): "
-            android:textColor="@color/red"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold" />
+            android:layout_marginStart="303dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="304dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sliderKD">
 
-        <TextView
-            android:id="@+id/kiTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/roboto_light"
-            android:text="50"
-            android:layout_marginHorizontal="@dimen/_5sdp"
-            android:textColor="@color/red"
-            android:textSize="@dimen/_14sdp"
-            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/kiMaxValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="KD(max 50): "
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/kiTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_5sdp"
+                android:fontFamily="@font/roboto_light"
+                android:text="50"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
 
         <com.google.android.material.slider.Slider
@@ -178,5 +183,7 @@
             app:thumbRadius="@dimen/_10sdp"
             app:trackColor="@color/trans_red" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
