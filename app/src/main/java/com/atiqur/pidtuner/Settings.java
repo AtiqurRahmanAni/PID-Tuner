@@ -137,6 +137,7 @@ public class Settings extends AppCompatActivity {
                     intent.putExtra(KEY_KD, kd);
                     intent.putExtra(KEY_KI, ki);
                     setResult(RESULT_OK, intent);
+                    Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
                     Toast.makeText(this, "Please set range from 1 to 900", Toast.LENGTH_SHORT).show();

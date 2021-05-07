@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import com.atiqur.pidtuner.R;
 import com.google.android.material.slider.Slider;
@@ -19,7 +19,7 @@ import java.lang.String;
 
 public final class ActivityMainBinding implements ViewBinding {
   @NonNull
-  private final ConstraintLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
   public final TextView kdMaxValue;
@@ -60,7 +60,7 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final Toolbar toolbar;
 
-  private ActivityMainBinding(@NonNull ConstraintLayout rootView, @NonNull TextView kdMaxValue,
+  private ActivityMainBinding(@NonNull ScrollView rootView, @NonNull TextView kdMaxValue,
       @NonNull TextView kdTextView, @NonNull TextView kiMaxValue, @NonNull TextView kiTextView,
       @NonNull TextView kpMaxValue, @NonNull TextView kpTextView, @NonNull LinearLayout layoutKD,
       @NonNull LinearLayout layoutKI, @NonNull LinearLayout layoutKP, @NonNull Slider sliderKD,
@@ -83,7 +83,7 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ConstraintLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -186,9 +186,9 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((ConstraintLayout) rootView, kdMaxValue, kdTextView,
-          kiMaxValue, kiTextView, kpMaxValue, kpTextView, layoutKD, layoutKI, layoutKP, sliderKD,
-          sliderKP, sliderKi, toolbar);
+      return new ActivityMainBinding((ScrollView) rootView, kdMaxValue, kdTextView, kiMaxValue,
+          kiTextView, kpMaxValue, kpTextView, layoutKD, layoutKI, layoutKP, sliderKD, sliderKP,
+          sliderKi, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

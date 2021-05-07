@@ -54,7 +54,6 @@ public class Bluetooth {
         setState(0);
     }
 
-    /* access modifiers changed from: private */
     public void connectionFailed() {
         Message msg = mHandler.obtainMessage(3);
         Bundle bundle = new Bundle();
@@ -64,7 +63,6 @@ public class Bluetooth {
         start();
     }
 
-    /* access modifiers changed from: private */
     public void connectionLost() {
         Message msg = mHandler.obtainMessage(3);
         Bundle bundle = new Bundle();
