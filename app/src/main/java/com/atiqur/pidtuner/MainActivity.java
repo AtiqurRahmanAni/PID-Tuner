@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int ENABLED = 111;
     public static final int SETTINGS = 333;
     private boolean isConnected = false;
+    private boolean isConnecting = false;
     private Menu menu;
     private Thread mPIDThread;
 
@@ -64,9 +65,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setSliderValues(float kp, float kd, float ki) {
-        binding.kpMaxValue.setText(String.format("KP(max %.3s):", (int)kp));
-        binding.kdMaxValue.setText(String.format("KD(max %.3s):", (int)kd));
-        binding.kiMaxValue.setText(String.format("KI(max %.3s):", (int)ki));
+        binding.kpMaxValue.setText(String.format("KP(max %.3s):", (int) kp));
+        binding.kdMaxValue.setText(String.format("KD(max %.3s):", (int) kd));
+        binding.kiMaxValue.setText(String.format("KI(max %.3s):", (int) ki));
         binding.sliderKP.setValueTo(kp);
         binding.sliderKD.setValueTo(kd);
         binding.sliderKi.setValueTo(ki);
@@ -173,9 +174,9 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.connect_scan) {
             if (!mBluetoothAdapter.isEnabled()) {
                 startActivityForResult(new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), REQUEST_ENABLE_BT);
-            } else if (!isConnected) {
+            } else if (!isConnected && !isConnecting) {
                 startActivityForResult(new Intent(this, PairedActivity.class), ENABLED);
-            } else {
+            } else if (mBluetooth.getState() == 2) {
                 Toast.makeText(this, "You are already connected!", Toast.LENGTH_SHORT).show();
             }
         } else if (item.getItemId() == R.id.menu_disconnect) {
@@ -203,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
                     mBluetooth.stop();
                     mBluetooth = new Bluetooth(mHandler);
                     try {
-                        wait(10);
+                           wait(10);
                     } catch (Exception e) {
                         Toast.makeText(this, "Error" + e, Toast.LENGTH_SHORT).show();
                     }
@@ -237,6 +238,7 @@ public class MainActivity extends AppCompatActivity {
                     menu.getItem(0).setTitle("Connect");
                 } else if (msg.arg1 == 1 && menuCreated) {
                     isConnected = false;
+                    isConnecting = true;
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_bluetooth_connecting));
                     menu.getItem(0).setShowAsAction(5);
                     menu.getItem(0).setTitle("Connecting...");
@@ -249,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
             } else if (msg.what == 2) {
                 Toast.makeText(MainActivity.this, "Connected to " + msg.getData().getString("device_name"), Toast.LENGTH_SHORT).show();
             } else if (msg.what == 3) {
+                isConnecting = false;
                 Toast.makeText(MainActivity.this, msg.getData().getString("toast"), Toast.LENGTH_SHORT).show();
             }
         }

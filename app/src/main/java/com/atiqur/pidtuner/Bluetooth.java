@@ -108,7 +108,7 @@ public class Bluetooth {
             try {
                 this.mmSocket.connect();
                 synchronized (this) {
-                    ConnectThread unused = mConnectThread = null;
+                    mConnectThread = null;
                 }
                 connected(this.mmSocket, this.mmDevice);
             } catch (IOException e) {
@@ -174,7 +174,7 @@ public class Bluetooth {
                     msg.setData(bundle);
                     mHandler.sendMessage(msg);
                 } catch (IOException e) {
-                    if (disconnecting) {
+                    if (!disconnecting) {
                         connectionLost();
                     }
                     Bluetooth.this.start();

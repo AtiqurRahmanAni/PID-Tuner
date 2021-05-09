@@ -20,7 +20,6 @@ public class HelperUtils {
         result[digits + 2] = 10;
         return result;
     }
-
     public static String convertString(CharSequence s) {
         boolean flag=false;
         StringBuilder temp= new StringBuilder();
