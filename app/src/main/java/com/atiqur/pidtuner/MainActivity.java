@@ -12,6 +12,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,9 @@ import com.atiqur.pidtuner.databinding.ActivityMainBinding;
 import com.atiqur.pidtuner.utils.HelperUtils;
 import com.atiqur.pidtuner.utils.ToolbarHelper;
 import com.google.android.material.slider.Slider;
+
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
     private Menu menu;
     private Thread mPIDThread;
 
+    boolean[] tables = new boolean[4];
+    HashMap<Integer, byte[]> map = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,32 +62,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        sliderListener();
         ToolbarHelper.create(binding.toolbar, null, this, "PID Tuner");
-        SharedPreferences sharedPreferences = getSharedPreferences(Settings.SHARED_PREFS, MODE_PRIVATE);
-        float kp = sharedPreferences.getFloat(Settings.KEY_KP, 50f);
-        float kd = sharedPreferences.getFloat(Settings.KEY_KD, 50f);
-        float ki = sharedPreferences.getFloat(Settings.KEY_KI, 50f);
-        setSliderValues(kp, kd, ki);
-    }
 
-    private void setSliderValues(float kp, float kd, float ki) {
-        binding.kpMaxValue.setText(String.format("KP(max %.3s):", (int) kp));
-        binding.kdMaxValue.setText(String.format("KD(max %.3s):", (int) kd));
-        binding.kiMaxValue.setText(String.format("KI(max %.3s):", (int) ki));
-        binding.sliderKP.setValueTo(kp);
-        binding.sliderKD.setValueTo(kd);
-        binding.sliderKi.setValueTo(ki);
-        binding.sliderKP.setValue(0f);
-        binding.sliderKD.setValue(0f);
-        binding.sliderKi.setValue(0f);
+        for (int i = 0; i < tables.length; i++) {
+            map.put(i, new byte[]{ (byte) ((char)(i + 49)) });
+        }
     }
 
     public void onResume() {
         super.onResume();
-        binding.kpTextView.setText(String.format("%.5s", binding.sliderKP.getValue()));
-        binding.kdTextView.setText(String.format("%.5s", binding.sliderKD.getValue()));
-        binding.kiTextView.setText(String.format("%.5s", binding.sliderKi.getValue()));
         checkBluetooth();
         if (mBluetooth == null) {
             mBluetooth = new Bluetooth(mHandler);
@@ -107,25 +97,25 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    void setTable(int index) {
+        for (int i = 0; i < tables.length; i++) {
+            tables[i] = i == index;
+        }
+
+        Log.d("HELLO", Arrays.toString(tables));
+
+    }
+
     private final Runnable sendValue = new Runnable() {
-        float prevkp = 0;
-        float prevkd = 0;
-        float prevki = 0;
 
         public void run() {
             while (true) {
-                if (Math.abs(kp - prevkp) >= THRESHOLD && mBluetooth.getState() == 2) {
-                    prevkp = kp;
-                    mBluetooth.write(HelperUtils.toBytesFloat('P', kp, 5));
+                for (int i = 0; i < tables.length; i++) {
+                    if (tables[i] && mBluetooth.getState() == 2) {
+                        mBluetooth.write(map.get(i));
+                    }
                 }
-                if (Math.abs(kd - prevkd) >= THRESHOLD && mBluetooth.getState() == 2) {
-                    prevkd = kd;
-                    mBluetooth.write(HelperUtils.toBytesFloat('D', kd, 5));
-                }
-                if (Math.abs(ki - prevki) >= THRESHOLD && mBluetooth.getState() == 2) {
-                    prevki = ki;
-                    mBluetooth.write(HelperUtils.toBytesFloat('I', ki, 5));
-                }
+
                 synchronized (this) {
                     try {
                         wait(25);
@@ -137,21 +127,6 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void sliderListener() {
-
-        binding.sliderKP.addOnChangeListener((slider, value, fromUser) -> {
-            kp = slider.getValue();
-            binding.kpTextView.setText(String.format("%.5s", kp));
-        });
-        binding.sliderKD.addOnChangeListener((slider, value, fromUser) -> {
-            kd = slider.getValue();
-            binding.kdTextView.setText(String.format("%.5s", kd));
-        });
-        binding.sliderKi.addOnChangeListener((slider, value, fromUser) -> {
-            ki = slider.getValue();
-            binding.kiTextView.setText(String.format("%.5s", ki));
-        });
-    }
 
     private void checkBluetooth() {
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -204,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                     mBluetooth.stop();
                     mBluetooth = new Bluetooth(mHandler);
                     try {
-                           wait(10);
+                        wait(10);
                     } catch (Exception e) {
                         Toast.makeText(this, "Error" + e, Toast.LENGTH_SHORT).show();
                     }
@@ -222,8 +197,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Bluetooth not enabled. Leaving", Toast.LENGTH_SHORT).show();
             finish();
         } else if (requestCode == SETTINGS && resultCode == RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            setSliderValues(bundle.getFloat(Settings.KEY_KP), bundle.getFloat(Settings.KEY_KD), bundle.getFloat(Settings.KEY_KI));
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -256,4 +230,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    public void tableButtonClick(View view) {
+        Button button = (Button) view;
+        String buttonText = button.getText().toString();
+        char lastIndex = buttonText.charAt(buttonText.length() - 1);
+        setTable(Integer.parseInt(lastIndex + "") - 1);
+    }
 }
