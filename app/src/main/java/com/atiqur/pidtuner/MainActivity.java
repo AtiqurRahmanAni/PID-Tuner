@@ -1,9 +1,7 @@
 package com.atiqur.pidtuner;
 
-import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,7 +9,6 @@ import android.os.Message;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -19,13 +16,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.solver.widgets.Helper;
 import androidx.core.content.ContextCompat;
 
 import com.atiqur.pidtuner.databinding.ActivityMainBinding;
-import com.atiqur.pidtuner.utils.HelperUtils;
 import com.atiqur.pidtuner.utils.ToolbarHelper;
-import com.google.android.material.slider.Slider;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -34,17 +28,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     ActivityMainBinding binding;
-    private static final double THRESHOLD = .0001;
-    private volatile float kp = 0;
-    private volatile float ki = 0;
-    private volatile float kd = 0;
     private boolean menuCreated = false;
     private BluetoothAdapter mBluetoothAdapter = null;
     public Bluetooth mBluetooth = null;
     private String deviceAddress = null;
     private static final int REQUEST_ENABLE_BT = 222;
     private static final int ENABLED = 111;
-    public static final int SETTINGS = 333;
     private boolean isConnected = false;
     private boolean isConnecting = false;
     private Menu menu;
@@ -62,10 +51,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        ToolbarHelper.create(binding.toolbar, null, this, "PID Tuner");
+        ToolbarHelper.create(binding.toolbar, null, this, "Robo Waiter");
 
         for (int i = 0; i < tables.length; i++) {
-            map.put(i, new byte[]{ (byte) ((char)(i + 49)) });
+            map.put(i, new byte[]{(byte) ((char) (i + 49))});
         }
     }
 
@@ -115,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 for (int i = 0; i < tables.length; i++) {
                     if (!isWriting && tables[i] && mBluetooth.getState() == 2) {
                         mBluetooth.write(map.get(i));
-                        Log.d("GG", "Data Sent!");
                         isWriting = true;
                     }
                 }
@@ -160,8 +148,6 @@ public class MainActivity extends AppCompatActivity {
             }
         } else if (item.getItemId() == R.id.menu_disconnect) {
             mBluetooth.disconnect();
-        } else if (item.getItemId() == R.id.menu_settings) {
-            startActivityForResult(new Intent(this, Settings.class), SETTINGS);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -200,8 +186,6 @@ public class MainActivity extends AppCompatActivity {
         } else if (requestCode == REQUEST_ENABLE_BT && resultCode == RESULT_CANCELED) {
             Toast.makeText(getApplicationContext(), "Bluetooth not enabled. Leaving", Toast.LENGTH_SHORT).show();
             finish();
-        } else if (requestCode == SETTINGS && resultCode == RESULT_OK) {
-
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
@@ -213,33 +197,39 @@ public class MainActivity extends AppCompatActivity {
                     isConnected = false;
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_bluetooth));
                     menu.getItem(0).setShowAsAction(5);
-                    menu.getItem(0).setTitle("Connect");
                 } else if (msg.arg1 == 1 && menuCreated) {
                     isConnected = false;
                     isConnecting = true;
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_bluetooth_connecting));
                     menu.getItem(0).setShowAsAction(5);
-                    menu.getItem(0).setTitle("Connecting...");
                 } else if (msg.arg1 == 2 && menuCreated) {
                     isConnected = true;
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(MainActivity.this, R.drawable.ic_bluetooth));
                     menu.getItem(0).setShowAsAction(5);
-                    menu.getItem(0).setTitle("Connected");
                 }
             } else if (msg.what == 2) {
                 Toast.makeText(MainActivity.this, "Connected to " + msg.getData().getString("device_name"), Toast.LENGTH_SHORT).show();
             } else if (msg.what == 3) {
                 isConnecting = false;
                 Toast.makeText(MainActivity.this, msg.getData().getString("toast"), Toast.LENGTH_SHORT).show();
+            } else if (msg.what == 4) {
+                Log.d("bluetooth_message", msg.getData().getString("bluetooth_message"));
+                Log.d("message_length", String.valueOf(msg.getData().getInt("message_length")));
             }
+
         }
     };
 
     public void tableButtonClick(View view) {
-        isWriting = false;
-        Button button = (Button) view;
-        String buttonText = button.getText().toString();
-        char lastIndex = buttonText.charAt(buttonText.length() - 1);
-        setTable(Integer.parseInt(lastIndex + "") - 1);
+        if (mBluetooth.getState() == 2) {
+            isWriting = false;
+            Button button = (Button) view;
+            String buttonText = button.getText().toString();
+            char lastIndex = buttonText.charAt(buttonText.length() - 1);
+            setTable(Integer.parseInt(lastIndex + "") - 1);
+        } else {
+            Toast.makeText(MainActivity.this, "You are not connected", Toast.LENGTH_SHORT).show();
+        }
+
     }
 }

@@ -23,19 +23,13 @@
         android:testOnly="true"
         android:theme="@style/Theme.PIDTuner" >
         <activity
-            android:name="com.atiqur.pidtuner.Settings"
-            android:parentActivityName="com.atiqur.pidtuner.MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.PIDTuner" >
-        </activity>
-        <activity
             android:name="com.atiqur.pidtuner.PairedActivity"
             android:parentActivityName="com.atiqur.pidtuner.MainActivity"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.PIDTuner" />
         <activity
             android:name="com.atiqur.pidtuner.MainActivity"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

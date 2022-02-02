@@ -13,12 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PIDTuner">
         <activity
-            android:name=".Settings"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.PIDTuner">
-        </activity>
-        <activity
             android:name=".PairedActivity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait"

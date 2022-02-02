@@ -14,13 +14,6 @@ public class ToolbarHelper {
 
         activity.getSupportActionBar().setTitle(title);
 
-//        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        activity.getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-//        final Drawable upArrow = ContextCompat.getDrawable(activity, R.drawable.abc_ic_ab_back_material);
-//        upArrow.setColorFilter(ContextCompat.getColor(activity, R.color.white), PorterDuff.Mode.SRC_ATOP);
-//        activity.getSupportActionBar().setHomeAsUpIndicator(upArrow);
-
 
         if (collapsingToolbarLayout != null) {
             collapsingToolbarLayout.setExpandedTitleColor(activity.getColor(R.color.white));

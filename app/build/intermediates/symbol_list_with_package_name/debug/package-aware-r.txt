@@ -2425,7 +2425,6 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
-id addFile1
 id address
 id alertTitle
 id aligned
@@ -2560,22 +2559,10 @@ id item_touch_helper_previous_elevation
 id jobBoard
 id jumpToEnd
 id jumpToStart
-id kdEditText
-id kdMaxValue
-id kdTextView
-id kiEditText
-id kiMaxValue
-id kiTextView
-id kpEditText
-id kpMaxValue
-id kpTextView
 id labelGroup
 id labeled
 id largeLabel
 id layout
-id layoutKD
-id layoutKI
-id layoutKP
 id left
 id leftToRight
 id line1
@@ -2604,7 +2591,6 @@ id material_timepicker_ok_button
 id material_timepicker_view
 id material_value_index
 id menu_disconnect
-id menu_settings
 id message
 id middle
 id mini
@@ -2710,9 +2696,6 @@ id showTitle
 id sin
 id skipCollapsed
 id slide
-id sliderKD
-id sliderKP
-id sliderKi
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -2858,7 +2841,6 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_paired
-layout activity_settings
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

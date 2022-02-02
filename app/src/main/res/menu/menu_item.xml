@@ -10,7 +10,4 @@
     <item
         android:id="@+id/menu_disconnect"
         android:title="Disconnect" />
-    <item
-        android:id="@+id/menu_settings"
-        android:title="Settings" />
 </menu>
