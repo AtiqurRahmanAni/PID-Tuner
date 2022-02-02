@@ -106,13 +106,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    boolean isWriting = true;
+
     private final Runnable sendValue = new Runnable() {
 
         public void run() {
             while (true) {
                 for (int i = 0; i < tables.length; i++) {
-                    if (tables[i] && mBluetooth.getState() == 2) {
+                    if (!isWriting && tables[i] && mBluetooth.getState() == 2) {
                         mBluetooth.write(map.get(i));
+                        Log.d("GG", "Data Sent!");
+                        isWriting = true;
                     }
                 }
 
@@ -232,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     public void tableButtonClick(View view) {
+        isWriting = false;
         Button button = (Button) view;
         String buttonText = button.getText().toString();
         char lastIndex = buttonText.charAt(buttonText.length() - 1);
