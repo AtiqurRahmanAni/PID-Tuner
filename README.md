@@ -1,7 +1,7 @@
 # PID-Tuner
 This is an Android app for tuning `PID` parameters via Bluetooth. You just need a Bluetooth module with Arduino to get the value. The Arduino code is given below. Now, you don't need to connect Arduino to your PC every time for changing the value of `KP`, `KI`, and `KD`. This app requires a minimum of Android 8.0 (Oreo).
 
-```
+```c++
 const int PACKET_SIZE = 8;
 float kp, kd, ki;
 void setup()
