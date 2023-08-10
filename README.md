@@ -92,5 +92,7 @@ void clearSerialBuffer()
 
 **A glimpse of the interface of the Android application.**
 
-![211307599_2889397484723373_1854363397960516322_n](https://github.com/AtiqurRahmanAni/PID-Tuner/assets/56642339/7e2b28ab-c6b4-4278-b9b3-a89fd216d874)
-![213655936_555273178828889_546660523934615202_n](https://github.com/AtiqurRahmanAni/PID-Tuner/assets/56642339/fdd558d0-edb7-454a-9984-4e8fe739a41d)
+<div style="display: flex;">
+  <img src=https://github.com/AtiqurRahmanAni/PID-Tuner/assets/56642339/7e2b28ab-c6b4-4278-b9b3-a89fd216d874 height=420px width=200px/>
+  <img src=https://github.com/AtiqurRahmanAni/PID-Tuner/assets/56642339/fdd558d0-edb7-454a-9984-4e8fe739a41d width=420 height=200px/>
+</div>
